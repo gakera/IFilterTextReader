@@ -10,19 +10,15 @@ namespace ConsoleApp1
         {
             try
             {
-                var DirectoryPath = @"D:\IFilter Test Documents";
+                var fileName = @"C:\Sicos1977.doc";
+                var file = new FileInfo(fileName);
 
-                var filesToProcess = Directory.EnumerateFiles(DirectoryPath);
+                Console.WriteLine($"Reading {file.Name}");
+                var reader = new FilterReader(fileName);
+                var txt = reader.ReadToEnd();
 
-                foreach (var fileName in filesToProcess)
-                {
-                    var file = new FileInfo(fileName);
-
-                    Console.WriteLine($"Reading {file.Name}");
-
-                    // Try and read the stream from the file
-                    TryReadFile(file);
-                }
+                // Try and read the stream from the file
+                TryReadFile(file);
 
             }
             catch (Exception ex)
